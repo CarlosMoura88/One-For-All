@@ -37,19 +37,19 @@ CREATE TABLE SpotifyClone.songs(
     FOREIGN KEY (album_id) REFERENCES albums(album_id)
 ) engine = InnoDB;
 
-CREATE TABLE SpotifyClone.historic(
-    story_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE SpotifyClone.historic(    
     user_id INT NOT NULL,
     song_id INT NOT NULL,
     reproduction_date DATETIME NOT NULL,
+    CONSTRAINT PRIMARY KEY (user_id, song_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (song_id) REFERENCES songs(song_id)    
 ) engine = InnoDB;
 
-CREATE TABLE SpotifyClone.followers(
-    follow_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE SpotifyClone.followers(    
     user_id INT NOT NULL,
     artist_id INT NOT NULL,
+    CONSTRAINT PRIMARY KEY (user_id, artist_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (artist_id) REFERENCES artists(artist_id)    
 ) engine = InnoDB;
@@ -169,8 +169,7 @@ VALUES
   (7, 11, '2018-01-16 18:40:43'),
   (8, 39, '2018-03-21 16:56:40'),
   (8, 40, '2020-10-18 13:38:05'),
-  (8, 32, '2019-05-25 08:14:03'),
-  (8, 32, '2019-05-25 08:14:03'),
+  (8, 32, '2019-05-25 08:14:03'),  
   (8, 33, '2021-08-15 21:37:09'),
   (9, 16, '2021-05-24 17:23:45'),
   (9, 17, '2018-12-07 22:48:52'),
